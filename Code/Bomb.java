@@ -49,7 +49,7 @@ public class Bomb extends GameObject{
 
 	public void setHealth(int health){
 		super.setHealth(health);
-		if (this.getHealth() <= 10){
+		if (this.getHealth() <= 10 && (this.getID() == ID.BOMB || this.getID() == ID.ENEMY_BOMB)){
 			this.setX(this.getX() - Game.TILE_SIZE / 4);
 			this.setY(this.getY() - Game.TILE_SIZE / 4);
 			this.setSize(Game.TILE_SIZE);
