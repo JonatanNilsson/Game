@@ -10,37 +10,39 @@ public class Images {
 	static Image Bomb, Explosion, HillaryClinton, LeifGWPersson, Lightning, 
 				Hearth, Blood, Trump;
 	
-	static void loadImages(){
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream input = classLoader.getResourceAsStream("Explosion.png");
+    static void loadImages(){
+        String path = "/src/main/resources/" ;
+
+		InputStream input = Images.class.getResourceAsStream(path + "Explosion.png");
 		try {
 			Explosion = ImageIO.read(input);
 		} catch (IOException e) { e.printStackTrace(); }
-		input = classLoader.getResourceAsStream("HillaryClinton.png");
+		input = Images.class.getResourceAsStream(path + "HillaryClinton.png");
 		try {
 			HillaryClinton = ImageIO.read(input);
 		} catch (IOException e) { e.printStackTrace(); }
-		input = classLoader.getResourceAsStream("LeifGWPersson.jpg");
+    	input = Images.class.getResourceAsStream(path + "LeifGWPersson.jpg");
+
 		try {
 			LeifGWPersson = ImageIO.read(input);
 		} catch (IOException e) { e.printStackTrace(); }
-		input = classLoader.getResourceAsStream("Lightning.png");
+		input = Images.class.getResourceAsStream(path + "Lightning.png");
 		try {
 			Lightning = ImageIO.read(input);
 		} catch (IOException e) { e.printStackTrace(); }
-		input = classLoader.getResourceAsStream("Bomb.png");
+		input = Images.class.getResourceAsStream(path + "Bomb.png");
 		try {
 			Bomb = ImageIO.read(input);
 		} catch (IOException e) { e.printStackTrace(); }
-		input = classLoader.getResourceAsStream("Heart.png");
+		input = Images.class.getResourceAsStream(path + "Heart.png");
 		try {
 			Hearth = ImageIO.read(input);
 		} catch (IOException e) { e.printStackTrace(); }
-		input = classLoader.getResourceAsStream("Blood.jpg");
+		input = Images.class.getResourceAsStream(path + "Blood.jpg");
 		try {
 			Blood = ImageIO.read(input);
 		} catch (IOException e) { e.printStackTrace(); }
-		input = classLoader.getResourceAsStream("Trump.png");
+		input = Images.class.getResourceAsStream(path + "Trump.png");
 		try {
 			Trump = ImageIO.read(input);
 		} catch (IOException e) { e.printStackTrace(); }
