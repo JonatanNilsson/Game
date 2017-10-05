@@ -63,6 +63,14 @@ public class Game extends Canvas implements Runnable{
 		long timer = System.currentTimeMillis();
 		int frames = 0;
 		while (running){
+            try        
+            {
+                    Thread.sleep(10);
+            } 
+            catch(InterruptedException ex) 
+            {
+                    Thread.currentThread().interrupt();
+            }
 			long now = System.nanoTime();
 			delta += (now - lastTime) / ns;
 			lastTime = now;
