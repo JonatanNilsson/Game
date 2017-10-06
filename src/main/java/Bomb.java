@@ -6,11 +6,12 @@ public class Bomb extends GameObject{
 	private static int time_to_live = 100;
 	private int velX, velY;
 	private Image explosion;
-	
+	private Image img;
 	
 	Bomb(int x, int y, ID id, int size, int health, Image img, Image explosion) {
-		super(x, y, id, size, health, img);
+		super(x, y, id, size, health);
 		this.explosion = explosion;
+        this.img = img;
 		this.setDamage(10);
 	}
 	Bomb(int x, int y, int dirX, int dirY){
@@ -36,7 +37,7 @@ public class Bomb extends GameObject{
 
 	public void render(Graphics g, Game ImgObserver) {
 		if (this.getHealth() > 25){
-			g.drawImage(this.getImage(), this.getX() - Game.windowXPos, 
+			g.drawImage(this.img, this.getX() - Game.windowXPos, 
 					this.getY() - Game.windowYPos, Game.TILE_SIZE/2, 
 					Game.TILE_SIZE/2, ImgObserver);
 		}

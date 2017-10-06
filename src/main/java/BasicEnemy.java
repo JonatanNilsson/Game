@@ -7,9 +7,11 @@ public class BasicEnemy extends GameObject{
 
 	private int stepLength;
 	private double velocity;
+    private Image img;
 	
 	BasicEnemy(int x, int y, ID id, int size, int health, Image img) {
-		super(x, y, id, size, health, img);
+		super(x, y, id, size, health);
+        this.img = img;
 		this.damage = 10;
 		this.velocity = 0.3;
 		this.stepLength = 1;
@@ -87,7 +89,7 @@ public class BasicEnemy extends GameObject{
 
 	public void render(Graphics g, Game ImgObserver) {
 		g.setColor(Color.GRAY);
-		g.drawImage(this.getImage(), this.getX() - Game.windowXPos, 
+		g.drawImage(this.img, this.getX() - Game.windowXPos, 
 				   this.getY() - Game.windowYPos, 
 				   this.getSize(), this.getSize(), ImgObserver);
 		if (getHealth() != getMaxHealth()){
@@ -106,5 +108,9 @@ public class BasicEnemy extends GameObject{
 		if (velocity >= 1 || velocity < 0) return;
 		this.velocity = velocity;
 	}
+
+   public Image getImage() {
+       return img;
+   }
 
 }

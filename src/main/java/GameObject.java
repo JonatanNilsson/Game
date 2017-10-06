@@ -7,15 +7,13 @@ public abstract class GameObject {
 	private int x, y, size, health, maxHealth;
 	protected int damage; 
 	private ID id; 
-	private Image img;
 	
-	GameObject(int x, int y, ID id, int size, int health, Image img){
+	GameObject(int x, int y, ID id, int size, int health){
 		this.x = x;
 		this.y = y;
 		this.id = id;
 		this.size = size;
 		this.health = health;
-		this.img = img;
 		this.setMaxHealth(health);
 	}
 	
@@ -87,10 +85,6 @@ public abstract class GameObject {
 	public int getHealth(){
 		return this.health;
 	}
-	public Image getImage(){
-		return this.img;
-	}
-
 	public int getMaxHealth() {
 		return maxHealth;
 	}

@@ -33,7 +33,7 @@ public class Game extends Canvas implements Runnable{
 		
 		
 		BasicTile.generateMap(handler);
-		handler.player = new Player(200, 100, ID.PLAYER, TILE_SIZE, 1000, Images.LeifGWPersson);
+		handler.player = new Player(200, 100, ID.PLAYER, TILE_SIZE, 1000, Images.Character);
 		
 	}
 	

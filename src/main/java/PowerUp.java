@@ -4,10 +4,11 @@ import java.awt.Image;
 
 public class PowerUp extends GameObject{
 
-	
+    Image img;
 	
 	PowerUp(int x, int y, ID id, int size, int health, Image img) {
-		super(x, y, id, size, health, img);
+		super(x, y, id, size, health);
+        this.img = img;
 	}
 
 	public void givePower(Player player){
@@ -22,7 +23,7 @@ public class PowerUp extends GameObject{
 	}
 
 	public void render(Graphics g, Game ImgObserver) {
-		g.drawImage(this.getImage(), this.getX() - Game.windowXPos, this.getY() - Game.windowYPos,
+		g.drawImage(this.img, this.getX() - Game.windowXPos, this.getY() - Game.windowYPos,
 						this.getSize(), this.getSize(), ImgObserver);
 	}
 	

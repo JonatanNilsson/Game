@@ -1,22 +1,29 @@
 import java.awt.Graphics;
-import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 
 
 public class Player extends GameObject{
-
+	private ArrayList<ArrayList <BufferedImage> > img;
 	static int health, power = 400;
-	private int dirX, dirY, tick_since_last_bomb = 10;
+	private int dirX, dirY; 
+	private int dir;
+	private int tick_since_last_bomb = 10;
 	private int increaseHealth = 0, increaseAttack = 0;
 	private boolean playerHurt = false;
+	private int moveSpeed = 20; // Just visual speed 
 	
 	
-	Player(int x, int y, ID id, int size, int health, Image img) {
-		super(x, y, id, size, health, img);
+	Player(int x, int y, ID id, int size, int health, ArrayList<ArrayList<BufferedImage> > img) {
+		super(x, y, id, size, health);
+		this.img = img;
 	}
 	
 
 	public void tick(Handler handler) {
+		
+		Player.health = this.getHealth();
 		
 		playerHurt = false;
 		
@@ -45,6 +52,7 @@ public class Player extends GameObject{
 			while (!this.validPos(handler)) this.setX( this.getX() - 1 );
 			new_dirX = 1;
 		}
+		
 		if (Game.Keys['S']){
 			this.setY(this.getY() + 3);
 			while (!this.validPos(handler)) this.setY( this.getY() - 1 );
@@ -73,8 +81,15 @@ public class Player extends GameObject{
 
 	public void render(Graphics g, Game ImgObserver) {
 		
-		Player.health = this.getHealth();
-		g.drawImage(this.getImage(), this.getX() - Game.windowXPos, 
+		int moveOrStand =  2* (int)((Game.tickCounter / moveSpeed)% 2);
+		if (!Game.Keys['W'] && !Game.Keys['S'] && !Game.Keys['A'] && !Game.Keys['D']) moveOrStand = 1;
+		
+		if (dirX < 0) dir = 1;
+		else if (dirX > 0) dir = 2;
+		else if (dirY > 0) dir = 0;
+		else if (dirY < 0) dir = 3;
+		
+		g.drawImage(img.get(dir).get( moveOrStand), this.getX() - Game.windowXPos, 
 				   this.getY() - Game.windowYPos, 
 				   this.getSize(), this.getSize(), ImgObserver);
 	}
