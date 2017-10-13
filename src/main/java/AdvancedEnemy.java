@@ -1,22 +1,23 @@
 import java.awt.Image;
-
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class AdvancedEnemy extends BasicEnemy{
-	
+
 	int hiddenRandom;
-	
-	AdvancedEnemy(int x, int y, ID id, int size, int health, Image img) {
+
+	AdvancedEnemy(int x, int y, ID id, int size, int health, ArrayList<ArrayList<BufferedImage> > img) {
 		super(x, y, id, size, health, img);
 		this.hiddenRandom = (int)(Math.random() * 299);
 	}
-	
+
 	public void tick(Handler handler){
 		super.tick(handler);
-		
+
 		if (Game.tickCounter % 300 == this.hiddenRandom && freeSight(handler)){
-			
+
 			int dirX, dirY;
-			
+
 			dirX = (handler.player.getX() / Game.TILE_SIZE - this.getX() / Game.TILE_SIZE);
 			if (dirX > 1){
 				dirX = 1;
@@ -27,7 +28,7 @@ public class AdvancedEnemy extends BasicEnemy{
 			else{
 				dirX = 0;
 			}
-			
+
 			dirY = (handler.player.getY() / Game.TILE_SIZE - this.getY() / Game.TILE_SIZE);
 			if (dirY > 1){
 				dirY = 1;
@@ -38,14 +39,14 @@ public class AdvancedEnemy extends BasicEnemy{
 			else{
 				dirY = 0;
 			}
-			
+
 			handler.addObject(new Bomb(this.getX(), this.getY(), dirX, dirY, ID.ENEMY_BOMB));
-		
+
 		}
-		
+
 	}
-	
-	
+
+
 	// Check if there is a wall in between the enemy and the player
 	private boolean freeSight(Handler handler){
 		double x = this.getX(), y = this.getY();
@@ -58,8 +59,7 @@ public class AdvancedEnemy extends BasicEnemy{
 		}
 		return true;
 	}
-	
-	
-	
-}
 
+
+
+}
